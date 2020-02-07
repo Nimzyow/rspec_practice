@@ -19,6 +19,7 @@ RSpec.describe Person do
     #with instance doubles, we can now solve teh issue of closely mimicking the class method. rspec will now throw errors if we mimick a method on a class that doesn't exist or if we pass the wrong number of arguments to a method. instance double is preferred in a lot of cases but double is ok if strictness is not overly important. 
     it "can only implement methods that are defined on the class" do
       #person = instance_double(Person, {a: "Hello", b: 20})
+      #pass the class as the argument for the instance_double to verify
       person = instance_double(Person)
       allow(person).to receive(:a).with(3).and_return("Hello")
       expect(person.a(3)).to eq("Hello")
